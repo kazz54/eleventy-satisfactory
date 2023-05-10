@@ -5,7 +5,31 @@ tags: xmas
 opengraph:
   image: https://live.staticflickr.com/1932/30454355997_287063f84b_q.jpg
 ---
+kwa kutumia tag za **template** ya **Django**  tuna taka kutenge ne zewa  `url` hasa ukizinga tia **Django** anatarajia **URL** kwenye `blog/urls.py` ambayo **inaitwa** **"name"** = `post_detail` ndiyo maana hapo kati sikuacha kuioyesha `post_detail`  namalizia na `pk=post.pk` **funguo yamsingi** nilisha izungumzia wakati tuna tengeneza **muonekano** siyo kazi kujua kwanini nime iweka hapo 
+```html
+<div class="row">
+{% for post in posts %}
 
+   <div class="col-md-4">
+        <div class="card mb-2">
+
+            <img class="card-img-top" src="{{ post.cover.url}}" class="img-fluid img-thumbnail" alt="{{ post.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.text | slice:":40" }}</p>
+
+                <a href="{% url 'post_detail' pk=post.pk %}" 
+                   class="btn btn-success">
+                    Soma zaidi
+                </a>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+``` 
 A few different heading levels from H2 to H6.  H1 is already used by the post title.  H2 to H4 get permalinks, but H5 and H6 don't.
 
 ## Malesuada fames
